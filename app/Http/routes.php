@@ -14,3 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [
+    'as' => 'home', 'uses' => 'HomeController@home'
+]);
+
+Route::post('/user/create', [
+    'as' => 'createUser', 'uses' => 'UserController@createUser'
+]);
+
+Route::post('/user/login', [
+    'as' => 'login', 'uses' => 'UserController@login'
+]);
+
+Route::get('user/home/{id}', [
+    'as' => 'userHome',
+    'uses' => 'UserController@userHome',
+    function ($id) {
+}]);
+
+Route::post('/picture/upload', [
+    'as' => 'uploadPicture', 'uses' => 'PictureController@uploadPicture'
+]);
+
+
+Route::get('/error', function () {
+    return "error uploading picture";
+});
+
+Route::get('picture/delete/{pictureId}', [
+    'as' => 'pictureDelete',
+    'uses' => 'PictureController@pictureDelete',
+    function ($pictureId) {
+}]);
